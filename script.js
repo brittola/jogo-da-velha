@@ -59,6 +59,7 @@ function markSquare(event) {
         count++;
     }else{
         alert('Este quadrado já foi clicado.');
+        return;
     }
 
     checkWin(player);
