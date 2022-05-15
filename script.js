@@ -7,6 +7,16 @@ let positions;
 let player;
 let count;
 let winner;
+let winCombinations = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6]
+];
 
 //função para atribuir valores iniciais das variáveis e construir o tabuleiro
 function startGame(){
@@ -76,22 +86,12 @@ function markSquare(event) {
 //checa todas as possibilidades de vitória com o player atual
 //se alguma for verdadeira, altera o valor da variável winner
 function checkWin(currentPlayer) {
-    if(positions[0] == currentPlayer && positions[1] == currentPlayer && positions[2] == currentPlayer){
-        winner = true;
-    }else if(positions[3] == currentPlayer && positions[4] == currentPlayer && positions[5] == currentPlayer){
-        winner = true;
-    }else if(positions[6] == currentPlayer && positions[7] == currentPlayer && positions[8] == currentPlayer){
-        winner = true;
-    }else if(positions[0] == currentPlayer && positions[3] == currentPlayer && positions[6] == currentPlayer){
-        winner = true;
-    }else if(positions[1] == currentPlayer && positions[4] == currentPlayer && positions[7] == currentPlayer){
-        winner = true;
-    }else if(positions[2] == currentPlayer && positions[5] == currentPlayer && positions[8] == currentPlayer){
-        winner = true;
-    }else if(positions[0] == currentPlayer && positions[4] == currentPlayer && positions[8] == currentPlayer){
-        winner = true;
-    }else if(positions[2] == currentPlayer && positions[4] == currentPlayer && positions[6] == currentPlayer){
-        winner = true;
+    for(i = 0; i < winCombinations.length; i++){
+        if(positions[winCombinations[i][0]] == currentPlayer &&
+            positions[winCombinations[i][1]] == currentPlayer &&
+            positions[winCombinations[i][2]] == currentPlayer){
+                winner = true;
+        }
     }
 }
 
