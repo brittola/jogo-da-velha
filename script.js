@@ -90,6 +90,12 @@ function checkWin(currentPlayer) {
         if(positions[winCombinations[i][0]] == currentPlayer &&
             positions[winCombinations[i][1]] == currentPlayer &&
             positions[winCombinations[i][2]] == currentPlayer){
+                
+                let squares = table.getElementsByTagName('div');
+                squares[winCombinations[i][0]].style.backgroundColor = 'green';
+                squares[winCombinations[i][1]].style.backgroundColor = 'green';
+                squares[winCombinations[i][2]].style.backgroundColor = 'green';
+
                 winner = true;
         }
     }
