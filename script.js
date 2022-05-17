@@ -1,4 +1,3 @@
-//declaração de variáveis
 let table = document.getElementById('table');
 let outResult = document.getElementById('outResult');
 let btRestart = document.getElementById('btRestart');
@@ -18,7 +17,6 @@ let winCombinations = [
     [2, 4, 6]
 ];
 
-//função para atribuir valores iniciais das variáveis e construir o tabuleiro
 function startGame(){
 
     resetValues();
@@ -42,7 +40,6 @@ function resetValues(){
     btRestart.style.display = 'none';
 }
 
-//se já estiver construído, apaga o tabuleiro e então constrói
 function buildTable(){
     if(table.getElementsByTagName('div').length != 0){
         for(i = 8; i >= 0; i--){
@@ -59,7 +56,6 @@ function buildTable(){
     }
 }
 
-//função para marcar o quadrado clicado e registrar no array positions
 function markSquare(event) {
     let squareClicked = event.target.id;
 
@@ -83,8 +79,6 @@ function markSquare(event) {
     player == 'X' ? player = 'O' : player = 'X';
 }
 
-//checa todas as possibilidades de vitória com o player atual
-//se alguma for verdadeira, altera o valor da variável winner
 function checkWin(currentPlayer) {
     for(i = 0; i < winCombinations.length; i++){
         if(positions[winCombinations[i][0]] == currentPlayer &&
@@ -101,7 +95,6 @@ function checkWin(currentPlayer) {
     }
 }
 
-//checa empate baseado no número de jogada e no status da variável winner
 function checkDraw() {
     if(count == 9){
         outResult.style.color = 'red';
@@ -112,7 +105,6 @@ function checkDraw() {
     }
 }
 
-//parabeniza o vencedor da partida
 function congratsWinner(winnerPlayer){
     outResult.style.color = 'greenyellow';
     outResult.textContent = `O jogo acabou! Vencedor: ${winnerPlayer}`;
@@ -121,7 +113,6 @@ function congratsWinner(winnerPlayer){
     disableSquares();
 }
 
-//remove a função markSquare de todos os quadrados do tabuleiro
 function disableSquares() {
     let squares = table.getElementsByTagName('div');
 
@@ -130,7 +121,6 @@ function disableSquares() {
     }
 }
 
-startGame();
-
-//adiciona a função de recarregar a página para o botão de jogar novamente
 btRestart.addEventListener('click', startGame);
+
+startGame();
